@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <options>
+    <path>C:\НПРЧ</path>
+    <deph>4</deph>
+    <precision>2</precision>
+    <maximum_latency>10</maximum_latency>
+    <debug_level_console>3</debug_level_console>
+    <debug_level_file>1</debug_level_file>
+    <debug_level_eventlog>3</debug_level_eventlog>
+    <pattern>_row_:$speed$;$power$;$plan$;_quality_;</pattern>
+  </options>
+  <blocks>
+    <block1 prefix="01">
+      <sources>
+        <pgu-1 type="odbc">
+          <station>driver={SQL Server};server=localhost;uid=login;pwd=password;database=devel</station>
+          <parameters>
+            <speed type="noisy">
+              <query>SELECT TOP(1) unixtimestamp, value FROM History WHERE card_id=650010789 AND param_no=1 AND unixtimestamp &lt;= _unix_basetime_ ORDER BY unixtimestamp DESC</query>
+              <query>SELECT unixtimestamp, value FROM History WHERE card_id=650010789 AND param_no=1 AND unixtimestamp &gt;= _unix_basetime_ AND unixtimestamp &lt;= _unix_basetime_ + 3600</query>
+            </speed>
+            <power type="noisy">
+              <query>SELECT TOP(1) unixtimestamp, value FROM History WHERE card_id=650010790 AND param_no=1 AND unixtimestamp &lt;= _unix_basetime_ ORDER BY unixtimestamp DESC</query>
+              <query>SELECT unixtimestamp, value FROM History WHERE card_id=650010790 AND param_no=1 AND unixtimestamp &gt;= _unix_basetime_ AND unixtimestamp &lt;= _unix_basetime_ + 3600</query>
+            </power>
+            <plan type="linear">
+              <query>SELECT TOP(1) unixtimestamp, value FROM History WHERE card_id=650010791 AND param_no=1 AND unixtimestamp &lt;= _unix_basetime_ ORDER BY unixtimestamp DESC</query>
+              <query>SELECT unixtimestamp, value FROM History WHERE card_id=650010791 AND param_no=1 AND unixtimestamp &gt;= _unix_basetime_ AND unixtimestamp &lt;= _unix_basetime_ + 3600</query>
+            </plan>
+          </parameters>
+        </pgu-1>
+      </sources>
+    </block1>
+  </blocks>
+</settings>

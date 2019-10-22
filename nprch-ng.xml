@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings>
+  <options>
+    <path>\\HOST\НПРЧ</path>
+    <deph>24</deph>
+    <precision>2</precision>
+    <maximum_latency>10</maximum_latency>
+    <debug_level_console>3</debug_level_console>
+    <debug_level_file>1</debug_level_file>
+    <debug_level_eventlog>3</debug_level_eventlog>
+    <pattern>_row_:$speed$;$power$;$plan$;_quality_;</pattern>
+  </options>
+  <blocks>
+    <block1 prefix="01">
+      <sources>
+        <pgu-1 type="kvint">
+          <station>pgu1srv1</station>
+          <station>pgu1srv2</station>
+          <parameters>
+            <speed type="noisy">10ОборотыГТ.Значение</speed>
+            <power type="noisy">10МощностьБлока.Значение</power>
+            <plan type="linear">10ЗаданиеМощностиБлока.Значение</plan>
+          </parameters>
+        </pgu-1>
+        <stzir-1 type="kvint">
+          <station>stzir-1-srv1</station>
+          <station>stzir-1-srv2</station>
+          <parameters>
+            <speed type="noisy">10ОборотыГТ.Значение</speed>
+            <power type="noisy">10МощностьБлока.Значение</power>
+            <plan type="linear">10ПлановаяМощностьБлока.Значение</plan>
+          </parameters>
+        </stzir-1>
+      </sources>
+    </block1>
+    <block2 prefix="02">
+      <sources>
+        <pgu-2 type="kvint">
+          <station>pgu-2-srv1</station>
+          <station>pgu-2-srv2</station>
+          <parameters>
+            <speed type="noisy">20ОборотыГТ.Значение</speed>
+            <power type="noisy">20МощностьБлока.Значение</power>
+            <plan type="linear">20ЗаданиеМощностиБлока.Значение</plan>
+          </parameters>
+        </pgu-2>
+        <stzir-2 type="kvint">
+          <station>stzir-2-srv1</station>
+          <station>stzir-2-srv2</station>
+          <parameters>
+            <speed type="noisy">20ОборотыГТ.Значение</speed>
+            <power type="noisy">20МощностьБлока.Значение</power>
+            <plan type="linear">20ПлановаяМощностьБлока.Значение</plan>
+          </parameters>
+        </stzir-2>
+      </sources>
+    </block2>
+  </blocks>
+</settings>
